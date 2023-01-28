@@ -5,6 +5,7 @@
   become_user: root
   roles:
     - nginx
+    - app/routing
 # Install application
 - hosts: application
   become: yes

@@ -1,0 +1,12 @@
+upstream application {
+    server 192.168.33.11;
+    server 192.168.33.12;
+}
+
+server {
+    server_name application.nginx;
+
+    location / {
+        proxy_pass http://application;
+    }
+}

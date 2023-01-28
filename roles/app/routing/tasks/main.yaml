@@ -1,13 +1,20 @@
 # Nginx configuration for multiple remote servers for one server
 #
-# upstream application {
-#     server <ip worker1>;
-#     server <ip worker2>;
-# }
-# server {
-#     ...
-#     location / {
-#         proxy_pass http://application;
-#     }
-# }
+#upstream application {
+#    server 192.168.33.11;
+#    server 192.168.33.12;
+#}
 #
+#server {
+#    location / {
+#        proxy_pass http://application;
+#    }
+#}
+---
+- name: Apply route application.nginx to workers
+  template:
+    src: redirect.conf.j2
+    dest: /etc/nginx/conf.d/redirect.conf
+    owner: root
+    group: root
+    mode: 0755
